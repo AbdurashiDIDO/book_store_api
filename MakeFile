@@ -1,0 +1,3 @@
+mig:
+	./manage.py migrate
+	./manage.py makemigrations
