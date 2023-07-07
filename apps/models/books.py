@@ -1,11 +1,12 @@
 from django.core.validators import FileExtensionValidator
 from django.db.models import Model, CharField, PositiveIntegerField, DateField, FileField, ForeignKey, \
-    CASCADE
+    CASCADE, ImageField
 
 
 class Book(Model):
     title = CharField(max_length=255)
-    content = FileField(upload_to='pdf/', null=True,
+    poster = ImageField(upload_to='poster/books/')
+    content = FileField(upload_to='pdf/books/', null=True,
                         blank=True,
                         validators=[FileExtensionValidator(['pdf'])])
     pages = PositiveIntegerField(null=True)
@@ -14,5 +15,5 @@ class Book(Model):
 
     def __str__(self):
 
-        return self.title and self.year.strftime('%d-%m-%Y')
+        return self.title
 
